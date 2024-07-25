@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import { log } from '../log';
 
 const Header = () => {
@@ -10,4 +10,5 @@ const Header = () => {
     </header>
   );
 };
-export default Header;
+// memo를 import하거나 React.memo를 사용하면 됨
+export default memo(Header);
