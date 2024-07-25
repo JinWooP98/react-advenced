@@ -11,4 +11,5 @@ const Header = () => {
   );
 };
 // memo를 import하거나 React.memo를 사용하면 됨
-export default memo(Header);
+// export default memo(Header);
+export default (Header);
