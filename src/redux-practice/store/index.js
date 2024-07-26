@@ -8,6 +8,24 @@ const initialCounterState =  {
     showCounter: true,
 };
 
+const initialAuthState = {
+    isLoggedIn: false
+};
+
+// 인증 관련 슬라이스 추가
+const authSlice = createSlice({
+    name:'auth',
+    initialState: initialAuthState,
+    reducers: {
+        login(state) {
+            state.isLoggedIn = true;
+        },
+        logOut(state) {
+            state.isLoggedIn = false;
+        }
+    }
+});
+
 // reducer : 상태 변경을 위한 순수 함수 - 부수 효과(비동기코드)가 없는 함수
 // 카운터 상태 관리를 위한 리듀서 정의
 
@@ -49,11 +67,16 @@ const counterSlice = createSlice({
 // 단하나의 리덕스 스토어
 // 스토어에는 리듀서를 제공할 수 있다.
 const store = configureStore({
-    reducer: counterSlice.reducer
+    reducer: {
+        counter: counterSlice.reducer,
+        auth: authSlice.reducer,
+    },
 });
 
 // 슬라이스 안에 reducers에 정의한 함수들을 내보내기
 export const counterActions = counterSlice.actions;
+
+export const authActions = authSlice.actions;
 
 // 리액트의 index.js에게 store 제공
 export default store;
