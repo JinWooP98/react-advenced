@@ -1,9 +1,13 @@
 
 import {createStore} from "redux";
 
+// 액션 타입 상수
+export const INCREMENT = 'INCREMENT'
+export const DECREMENT = 'DECREMENT'
+
 // 관리할 초기 상태값 객체
 const initialCounterState =  {
-    counter: 10,
+    counter: 0,
 };
 
 // reducer : 상태 변경을 위한 순수 함수 - 부수 효과(비동기코드)가 없는 함수
@@ -11,14 +15,28 @@ const initialCounterState =  {
 
 /**
  *
- * @param (state) : 상태 변경 이전의 상태
- * @param (action) : 상태를 어떻게 변경할지의 대한 명세
+ * @param (state) : { counter : number} 변경 이전의 상태
+ * @param (action) : {action.type} 상태를 어떻게 변경할지의 대한 명세
  * @returns {*} - 변경 후 새로운 상태값
+ *
  */
 const counterReducer = (state = initialCounterState, action) => {
 
     console.log(state);
     console.log(action);
+
+    // 1. 상태값 변경시 반드시 새로운 상태를 반환
+    // 2. 상태값 변경은 반드시 새로운 객체를 할당해야 함.
+    switch(action.type) {
+        case INCREMENT :
+            return {
+                counter : state.counter + 1
+            };
+        case DECREMENT :
+            return  {
+                counter : state.counter - 1
+            };
+    }
 
     return state;
 };
