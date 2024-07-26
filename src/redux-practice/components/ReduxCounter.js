@@ -25,8 +25,8 @@ const ReduxCounter = () => {
         dispatch({type:DECREMENT})
     }
 
-    const incrementDouble = e => {
-        dispatch({type: DOUBLE})
+    const multiplyHandler = e => {
+        dispatch({type: DOUBLE, payload: 4})
     }
 
     return (
@@ -37,7 +37,7 @@ const ReduxCounter = () => {
             <div>
                 <button onClick={increaseHandler}>Increment</button>
                 <button onClick={decreaseHandler}>Decrement</button>
-                <button onClick={incrementDouble}>IncrementDouble</button>
+                <button onClick={multiplyHandler}>IncrementDouble</button>
             </div>
 
             <button>Toggle Counter</button>

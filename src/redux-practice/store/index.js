@@ -37,6 +37,10 @@ const counterReducer = (state = initialCounterState, action) => {
             return  {
                 counter : state.counter - 1
             };
+        case DOUBLE :
+            return {
+                counter: state.counter * action.payload
+            }
     }
 
     return state;
