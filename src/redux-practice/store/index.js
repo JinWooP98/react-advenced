@@ -4,6 +4,7 @@ import {createStore} from "redux";
 // 액션 타입 상수
 export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
+export const DOUBLE = 'DOUBLE'
 
 // 관리할 초기 상태값 객체
 const initialCounterState =  {
