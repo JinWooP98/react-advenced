@@ -5,10 +5,12 @@ import {createStore} from "redux";
 export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
 export const DOUBLE = 'DOUBLE'
+export const TOGGLE = 'toggle'
 
 // 관리할 초기 상태값 객체
 const initialCounterState =  {
     counter: 0,
+    showCounter: true,
 };
 
 // reducer : 상태 변경을 위한 순수 함수 - 부수 효과(비동기코드)가 없는 함수
@@ -31,15 +33,23 @@ const counterReducer = (state = initialCounterState, action) => {
     switch(action.type) {
         case INCREMENT :
             return {
-                counter : state.counter + 1
+                ...state,
+                counter : state.counter + 1,
             };
         case DECREMENT :
             return  {
-                counter : state.counter - 1
+                ...state,
+                counter : state.counter - 1,
             };
         case DOUBLE :
             return {
-                counter: state.counter * action.payload
+                ...state,
+                counter: state.counter * action.payload,
+            }
+        case TOGGLE :
+            return {
+                ...state,
+                showCounter: !state.showCounter
             }
     }
 
