@@ -3,7 +3,6 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
     cartItems: [], // 장바구니에 담긴 상품 객체들
     totalQuantity: 0, // 장바구니 총 수량
-
 };
 
 const cartSlice = createSlice({
@@ -22,6 +21,7 @@ const cartSlice = createSlice({
                 existingItem.quantity++;
                 existingItem.total += existingItem.price;
             }
+            state.totalQuantity++;
         },
 
         removeCartItem(state, action) {
@@ -33,8 +33,10 @@ const cartSlice = createSlice({
                 existingItem.quantity--;
                 existingItem.total -= existingItem.price;
             } else {
-
+                state.cartItems = state.cartItems.filter(item => item.id !== removeCartItem.id);
             }
+
+            state.totalQuantity--;
         }
     }
 });

@@ -9,13 +9,11 @@ const CartItem = ({item}) => {
   const dispatch = useDispatch();
 
   const addCartHandler = (e) => {
-      dispatch(cartActions.addCartItem({
-          id: id,
-          quantity: quantity,
-          total: total,
-          price: price,
-          title: title
-      }))
+      dispatch(cartActions.addCartItem(item));
+  };
+
+  const removeCartHandler = e => {
+      dispatch(cartActions.removeCartItem(item));
   }
 
   return (
@@ -32,7 +30,7 @@ const CartItem = ({item}) => {
           x <span>{quantity}</span>
         </div>
         <div className={styles.actions}>
-          <button>-</button>
+          <button onClick={removeCartHandler}>-</button>
           <button onClick={addCartHandler}>+</button>
         </div>
       </div>
